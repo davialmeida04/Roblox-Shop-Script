@@ -1,0 +1,31 @@
+-- Money Settings
+
+local Text = script.Parent
+local initialMoney = 0
+
+
+----------------------
+
+
+-- Buy Settings
+
+local Buy = script.Parent.Parent.TextButton
+local Key = game:GetService("ReplicatedStorage").Key
+local Player = game:GetService("Players").LocalPlayer
+
+
+Buy.MouseButton1Click:Connect(function()
+	if initialMoney >= 50 then
+		local KeyClone = Key:Clone()
+		KeyClone.Parent = Player.Backpack
+		
+		initialMoney = initialMoney - 50
+	end
+end)
+
+
+while true do
+	task.wait(1)
+	initialMoney += 1
+	Text.Text = tostring(initialMoney)
+end
